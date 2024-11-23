@@ -1,0 +1,49 @@
+# Node.js dependencies
+/node_modules/
+
+# TypeScript build artifacts
+/dist/
+/build/
+/*.tsbuildinfo
+
+# Logs
+/logs/
+/*.log
+
+# Environment variables
+.env
+
+# Operating system files
+.DS_Store          # macOS
+Thumbs.db          # Windows
+
+# IDE or editor files
+.vscode/           # VSCode settings
+.idea/             # JetBrains IDE settings
+*.suo              # Visual Studio settings
+
+# Dependency directories for some package managers
+/pnpm-debug.log    # pnpm logs
+/yarn-debug.log    # yarn logs
+/yarn-error.log    # yarn logs
+
+# TypeScript declaration files
+*.d.ts
+
+# Test coverage
+/coverage/
+
+# Temporary files
+*.tgz
+*.bak
+*.swp
+
+# Docker files (if using Docker)
+docker-compose.override.yml
+Dockerfile.*
+
+# Local development files
+*.local
+
+# Custom IDE configurations
+*.iml

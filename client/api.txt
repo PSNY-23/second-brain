@@ -1,0 +1,8 @@
+https://api.dub.co/metatags?url=https://en.wikipedia.org/wiki/Shivaji
+{
+"title": "Shivaji - Wikipedia",
+"description": "No description",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Shivaji_British_Museum.jpg/1200px-Shivaji_British_Museum.jpg",
+"poweredBy": "Dub.co - Link management for modern marketing teams"
+}
+
