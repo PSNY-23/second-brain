@@ -5,18 +5,23 @@ import jwt from "jsonwebtoken";
 // Register a new user
 const signUp = async (req, res) => {
   const { email, password } = req.body;
+  
 
   try {
     // Check if user already exists
     const userExists = await User.findOne({ email });
+    console.log(userExists)
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
 
     const user = new User({ email, password });
     await user.save();
+    console.log("user db me save hua")
+
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    console.log("user ka token ban chuka hai")
 
     res.status(201).json({ token });
   } catch (error) {

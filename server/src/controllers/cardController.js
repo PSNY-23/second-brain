@@ -1,6 +1,7 @@
 import Card from "../models/card.model.js";
 import fetch from "node-fetch";
 import puppeteer from "puppeteer";
+import classifyUrl from "../services/classifyUrl.js";
 
 // Function to get data from URL
 async function getUrlData(url) {
@@ -19,6 +20,7 @@ async function getUrlData(url) {
     });
 
     const linkPreviewData = await linkPreviewResponse.json();
+    const { domain, fileType } = classifyUrl(url);
 
     // Fetch screenshot using Puppeteer
     const browser = await puppeteer.launch();
@@ -35,6 +37,8 @@ async function getUrlData(url) {
       title: linkPreviewData.title || "No title available",
       description: linkPreviewData.description || "No description available",
       url: linkPreviewData.url || url,
+      domain: domain,
+      fielType: fileType,
       imageUrl: linkPreviewData.image || "no image url", // Storing only the image URL
       screenshot: Buffer.from(screenshotArrayBuffer), // Storing screenshot as Buffer
     };
@@ -62,9 +66,11 @@ const createCard = async (req, res) => {
       title: data.title,
       description: data.description,
       url: data.url,
+      domain: data.domain,
+      fileType: data.fielType,
       imageUrl: data.imageUrl, // Save image URL, not the image itself
-      screenshot: data.screenshot, // Save the screenshot as Buffer
       user: req.user.id, // Assuming the user is authenticated and `req.user.id` contains the user's ID
+      screenshot: data.screenshot, // Save the screenshot as Buffer
     });
 
     // Save the card to the database
@@ -111,7 +117,6 @@ const deleteCard = async (req, res) => {
     if (card.user.toString() !== req.user.id) {
       return res.status(403).json({ message: "Not authorized" });
     }
-    res.send("user is authorised to delete")
 
     // Delete the card from the database
     await Card.findByIdAndDelete(req.params.id);
@@ -126,7 +131,7 @@ const deleteCard = async (req, res) => {
 
 // Update a card by ID
 const updateCard = async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, tag, color } = req.body;
 
   try {
     const card = await Card.findById(req.params.id);
@@ -139,6 +144,8 @@ const updateCard = async (req, res) => {
 
     card.title = title || card.title;
     card.description = description || card.description;
+    card.tag = tag || card.tag || null;
+    card.color = color || card.color || null;
 
     await card.save();
     res.json(card);

@@ -12,19 +12,24 @@ const cardSchema = new mongoose.Schema(
     url: {
       type: String,
     },
+    domain: {
+      type: String,
+    },
+    fileType: {
+      type: String,
+    },
     imageUrl: {
       type: String,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Assuming you have a User model to associate the card with a user
+      required: true,
     },
 
     screenshot: {
       // Store screenshot as a binary buffer
       type: Buffer,
-    },
-
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Assuming you have a User model to associate the card with a user
-      required: true,
     },
   },
   {
