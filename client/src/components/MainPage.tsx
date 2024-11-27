@@ -1,10 +1,10 @@
 import Navbar from "./Navbar";
 import AllCards from "./AllCards"
-const MainPage = () => {
+const MainPage = ({selectedFilters}) => {
   return (
       <div className="w-full">
           <Navbar />
-          <AllCards/>
+      <AllCards selectedFilters={selectedFilters} />
           
     </div>
   )

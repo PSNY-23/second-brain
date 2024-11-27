@@ -131,11 +131,11 @@ const deleteCard = async (req, res) => {
 
 // Update a card by ID
 const updateCard = async (req, res) => {
-  const { title, description, tag, color } = req.body;
-
+  console.log("updaitng req, recevied");
+  const { title, description, tags, color } = req.body;
   try {
     const card = await Card.findById(req.params.id);
-
+     
     if (!card) return res.status(404).json({ message: "Card not found" });
 
     if (card.user.toString() !== req.user.id) {
@@ -144,9 +144,9 @@ const updateCard = async (req, res) => {
 
     card.title = title || card.title;
     card.description = description || card.description;
-    card.tag = tag || card.tag || null;
+    card.tags = tags || card.tags || null;
     card.color = color || card.color || null;
-
+     console.log("card hasn't been saved")
     await card.save();
     res.json(card);
   } catch (error) {

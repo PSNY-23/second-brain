@@ -17,11 +17,9 @@ const signUp = async (req, res) => {
 
     const user = new User({ email, password });
     await user.save();
-    console.log("user db me save hua")
 
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-    console.log("user ka token ban chuka hai")
 
     res.status(201).json({ token });
   } catch (error) {
@@ -36,7 +34,7 @@ const signIn = async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(400).json({ message: "User doesn't exist, please singup first." });
     }
 
     const isMatch = await user.comparePassword(password);

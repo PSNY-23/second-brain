@@ -21,6 +21,12 @@ const cardSchema = new mongoose.Schema(
     imageUrl: {
       type: String,
     },
+    tags: {
+      type: Array
+    },
+    color: {
+      type: String
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User", // Assuming you have a User model to associate the card with a user
