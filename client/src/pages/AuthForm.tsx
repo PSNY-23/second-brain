@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import noiseSvg from "../assets/svg/noise.svg";
 
 const AuthForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -49,18 +50,37 @@ const AuthForm: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gray-950">
+      {/* <div className="absolute top-32 left-1/3 w-48 h-48 rounded-full bg-gradient-to-br from-yellow-500 to-red-400"></div> */}
+      <div
+        className="absolute top-32 left-1/3 w-48 h-48 rounded-full"
+        style={{
+          background: `linear-gradient(to bottom right, yellow, red), url(${noiseSvg})`,
+
+          backgroundSize: "cover",
+          backgroundBlendMode: "multiply", // Ensures the gradient and noise blend better
+          filter: "contrast(200%) brightness(150%)", // Makes the noise more visible
+        }}
+      ></div>
+
+      <div
+        className="absolute bottom-24 right-1/3 w-48 h-48 rounded-full"
+        style={{
+          background: `linear-gradient(to bottom right, #63b3ed, #2b6cb0), url(${noiseSvg})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "multiply",
+          filter: "contrast(200%) brightness(150%)",
+        }}
+      ></div>
+
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-md w-96"
+        className="bg-transparent backdrop-blur-md text-gray-100 border p-6 rounded-lg shadow-md w-96"
       >
         <h2 className="text-2xl mb-4">{isSignUp ? "Sign Up" : "Sign In"}</h2>
 
         <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="email" className="block text-sm  text-white">
             Email
           </label>
           <input
@@ -69,7 +89,7 @@ const AuthForm: React.FC = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full peer px-3 py-2 border rounded-md outline-none appearance-none bg-transparent"
             required
           />
         </div>
@@ -77,7 +97,7 @@ const AuthForm: React.FC = () => {
         <div className="mb-4">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-white"
           >
             Password
           </label>
@@ -87,7 +107,7 @@ const AuthForm: React.FC = () => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md outline-none appearance-none bg-transparent"
             required
           />
         </div>
@@ -96,7 +116,7 @@ const AuthForm: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+          className="w-full bg-transparent backdrop-blur-md border hover:border-none hover:bg-blue-700 text-white py-2 px-4 rounded"
           disabled={loading}
         >
           {loading
@@ -116,7 +136,7 @@ const AuthForm: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsSignUp(!isSignUp)}
-            className="text-blue-500 ml-2"
+            className="text-blue-500  ml-2"
           >
             {isSignUp ? "Sign In" : "Sign Up"}
           </button>

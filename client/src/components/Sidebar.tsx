@@ -6,6 +6,8 @@ import { LiaHashtagSolid } from "react-icons/lia";
 import { RiBrainLine } from "react-icons/ri";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { MdInvertColors } from "react-icons/md";
+
 
 
 interface SidebarProps {
@@ -66,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedFilters, setSelectedFilters }
   };
 
   return (
-    <div className="min-h-screen min-w-80 border border-r-2 border-gray-300 py-5 text-black px-6">
+    <div className="min-h-screen h-full min-w-80 border border-r-2 border-gray-300 py-5 text-black px-6">
       <div className="flex pl-2 text-2xl gap-2 items-center">
         <div className="flex items-center">
           <RiBrainLine className="text-darkBlue text-4xl font-bold" />
@@ -209,7 +211,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedFilters, setSelectedFilters }
             className="flex items-center justify-between gap-4 w-full"
           >
             <div className="flex items-center gap-2">
-              <FaSquareXTwitter /> Colors
+              <MdInvertColors /> Colors
             </div>
             <div className="flex items-center">
               {isColorOpen ? <AiOutlineUp /> : <AiOutlineDown />}

@@ -47,7 +47,8 @@ const AllCard: React.FC<AllCardProps> = ({ selectedFilters }) => {
               filter === "github" ||
               filter === "google" ||
               filter === "twitter" ||
-              filter === "link"
+              filter === "link" ||
+              filter === "youtube"
             ) {
               return card.domain.toLowerCase() === filter.toLowerCase();
             } else if (

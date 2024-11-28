@@ -32,7 +32,7 @@ const App: React.FC = () => {
           path="/dashboard"
           element={isAuthenticated ? <Home /> : <Navigate to="/auth" />}
         />
-
+         
         {/* Catch-all route - if the user is not authenticated, send them to /auth */}
         <Route
           path="*"
