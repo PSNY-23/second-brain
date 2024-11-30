@@ -68,7 +68,7 @@ const Sidebar: React.FC<SidebarProps> = ({ selectedFilters, setSelectedFilters }
   };
 
   return (
-    <div className="min-h-screen h-full min-w-80 border border-r-2 border-gray-300 py-5 text-black px-6">
+    <div className="min-h-screen h-full min-w-80 border py-5 text-black px-6">
       <div className="flex pl-2 text-2xl gap-2 items-center">
         <div className="flex items-center">
           <RiBrainLine className="text-darkBlue text-4xl font-bold" />

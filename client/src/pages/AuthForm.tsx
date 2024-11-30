@@ -53,7 +53,7 @@ const AuthForm: React.FC = () => {
     <div className="flex justify-center items-center min-h-screen bg-gray-950">
       {/* <div className="absolute top-32 left-1/3 w-48 h-48 rounded-full bg-gradient-to-br from-yellow-500 to-red-400"></div> */}
       <div
-        className="absolute top-32 left-1/3 w-48 h-48 rounded-full"
+        className="absolute top-32 left-1/3 w-24 h-24 lg:w-48 lg:h-48 rounded-full"
         style={{
           background: `linear-gradient(to bottom right, yellow, red), url(${noiseSvg})`,
 
@@ -64,7 +64,7 @@ const AuthForm: React.FC = () => {
       ></div>
 
       <div
-        className="absolute bottom-24 right-1/3 w-48 h-48 rounded-full"
+        className="absolute bottom-24 right-1/3 w-24 h-24 lg:w-48 lg:h-48 rounded-full"
         style={{
           background: `linear-gradient(to bottom right, #63b3ed, #2b6cb0), url(${noiseSvg})`,
           backgroundSize: "cover",
@@ -75,7 +75,7 @@ const AuthForm: React.FC = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-transparent backdrop-blur-md text-gray-100 border p-6 rounded-lg shadow-md w-96"
+        className="bg-transparent backdrop-blur-md text-gray-100 border px-5 md:p-6 rounded-lg shadow-md w-96"
       >
         <h2 className="text-2xl mb-4">{isSignUp ? "Sign Up" : "Sign In"}</h2>
 
